@@ -3,9 +3,13 @@
 
 import sys
 import re
+import boto3
 
 args = sys.argv
-billing_file = args[1]
+billing_bucket = 'hideyy_billingreport'
+
+s3 = boto3.resource('s3')
+bucket = s3.Bucket(billing_bucket)
 
 p = re.compile('\d{12}')
 
